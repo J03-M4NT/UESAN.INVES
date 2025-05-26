@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace UESAN.INVES.CORE.Infrastructure.Data;
+
+public partial class Categorias
+{
+    public int CategoriaId { get; set; }
+
+    public string NombreCategoria { get; set; } = null!;
+
+    public virtual ICollection<Publicaciones> Publicaciones { get; set; } = new List<Publicaciones>();
+}
