@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UESAN.INVES.CORE.Core.Entities;
 
 namespace UESAN.INVES.CORE.Infrastructure.Data;
 

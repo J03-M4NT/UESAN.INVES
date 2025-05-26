@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UESAN.INVES.CORE.Infrastructure.Data;
 namespace UESAN.INVES.CORE.Core.Entities;
 
 public partial class Publicaciones

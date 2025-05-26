@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UESAN.INVES.CORE.Core.Entities;
+using UESAN.INVES.CORE.Core.Interfaces;
 using UESAN.INVES.CORE.Infrastructure.Data;
 
 namespace UESAN.INVES.CORE.Infrastructure.Repositories
 {
-    public class AccesosRepository
+    public class AccesosRepository : IAccesosRepository
     {
         private readonly VdiIntranetContext _context;
         public AccesosRepository(VdiIntranetContext context)
@@ -18,7 +19,7 @@ namespace UESAN.INVES.CORE.Infrastructure.Repositories
         }
 
         //Get all access
-        public IEnumerable<Accesos>GetAllAccesos()
+        public IEnumerable<Accesos> GetAllAccesos()
         {
             var accesos = _context.Accesos.Where(a => a.FechaHoraAcceso != null)
                                           .Include(a => a.Usuario)
