@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using UESAN.INVES.CORE.Core.Entities;
+using UESAN.INVES.CORE.Core.DTOs;
 using UESAN.INVES.CORE.Core.Interfaces;
+using UESAN.INVES.CORE.Core.Entities;
 using System.Threading.Tasks;
 
 namespace UESAN.INVES.API.Controllers
@@ -15,6 +17,7 @@ namespace UESAN.INVES.API.Controllers
             _notificacionesRepository = notificacionesRepository;
         }
 
+
         // GET: api/Notificaciones
         [HttpGet]
         public async Task<IActionResult> GetNotificaciones()
@@ -22,6 +25,7 @@ namespace UESAN.INVES.API.Controllers
             var notificaciones = await _notificacionesRepository.GetAllNotificacionesAsync();
             return Ok(notificaciones);
         }
+
 
         // GET: api/Notificaciones/5
         [HttpGet("{id}")]

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using UESAN.INVES.CORE.Core.Interfaces;
+using UESAN.INVES.CORE.Core.Services;
 using UESAN.INVES.CORE.Infrastructure.Data;
 using UESAN.INVES.CORE.Infrastructure.Repositories;
 
@@ -12,8 +13,15 @@ builder.Services.AddDbContext<VdiIntranetContext>(options => options.UseSqlServe
 
 //TODO: Add interfaces
 builder.Services.AddScoped<IAccesosRepository, AccesosRepository>();
+builder.Services.AddScoped<ICategoriasRepository, CategoriasRepository>();
+builder.Services.AddScoped<ICategoriasService, CategoriasService>();
+builder.Services.AddScoped<IAsignacionesService, AsignacionesService>();
+builder.Services.AddScoped<IAsignacionesRepository, AsignacionesRepository>();
 builder.Services.AddScoped<INotificacionesRepository, NotificacionesRepository>();
-builder.Services.AddScoped<IFaqChatbotRepository, FaqChatbotRepository>();
+builder.Services.AddScoped<IFormularioInvestigacionRepository, FormularioInvestigacionRepository>();
+builder.Services.AddScoped<IFormularioInvestigacionService, FormularioInvestigacionService>();
+builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
+
 
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(x =>
