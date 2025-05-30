@@ -7,6 +7,6 @@ namespace UESAN.INVES.API.Controllers
     [ApiController]
     public class AsignacionesController : ControllerBase
     {
-        private readonly 
+
     }
 }
