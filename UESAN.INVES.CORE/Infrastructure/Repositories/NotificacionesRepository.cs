@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UESAN.INVES.CORE.Core.Entities;
+using UESAN.INVES.CORE.Core.Interfaces;
 using UESAN.INVES.CORE.Infrastructure.Data;
 
 namespace UESAN.INVES.CORE.Infrastructure.Repositories
 {
-    public class NotificacionesRepository
+    public class NotificacionesRepository : INotificacionesRepository
     {
 
         private readonly VdiIntranetContext _context;
