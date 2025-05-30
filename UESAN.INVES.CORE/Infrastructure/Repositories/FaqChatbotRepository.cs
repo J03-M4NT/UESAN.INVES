@@ -10,10 +10,10 @@ using UESAN.INVES.CORE.Infrastructure.Data;
 
 namespace UESAN.INVES.CORE.Infrastructure.Repositories
 {
-    public class FAQ_ChatbotRepository : IFAQ_ChatbotRepository
+    public class FaqChatbotRepository : IFaqChatbotRepository
     {
         private readonly VdiIntranetContext _context;
-        public FAQ_ChatbotRepository(VdiIntranetContext context)
+        public FaqChatbotRepository(VdiIntranetContext context)
         {
             _context = context;
         }
@@ -57,20 +57,23 @@ namespace UESAN.INVES.CORE.Infrastructure.Repositories
             return true;
         }
         //Update faq async
-        public async Task<bool> UpdateFAQAsync(FaqChatbot faq)
+        public async Task<FaqChatbot?> UpdateFAQAsync(FaqChatbot faq)
         {
             var existingFaq = await _context.FaqChatbot.FindAsync(faq.Faqid);
             if (existingFaq == null)
             {
-                return false;
+                return null;
             }
+
             existingFaq.PreguntaClave = faq.PreguntaClave;
             existingFaq.Respuesta = faq.Respuesta;
-            existingFaq.FechaCreacion = faq.FechaCreacion;
             existingFaq.Visible = faq.Visible;
+            existingFaq.FechaCreacion = existingFaq.FechaCreacion ?? DateTime.Now;
+
             _context.FaqChatbot.Update(existingFaq);
             await _context.SaveChangesAsync();
-            return true;
+
+            return existingFaq;
         }
 
     }

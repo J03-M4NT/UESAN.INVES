@@ -2,13 +2,13 @@
 
 namespace UESAN.INVES.CORE.Core.Interfaces
 {
-    public interface IFAQ_ChatbotRepository
+    public interface IFaqChatbotRepository
     {
         Task<FaqChatbot> CreateFAQAsync(FaqChatbot faq);
         Task<bool> DeleteFAQAsync(int id);
         IEnumerable<FaqChatbot> GetAllFAQs();
         Task<List<FaqChatbot>> GetAllFAQsAsync();
         Task<FaqChatbot?> GetFAQByIdAsync(int id);
-        Task<bool> UpdateFAQAsync(FaqChatbot faq);
+        Task<FaqChatbot?> UpdateFAQAsync(FaqChatbot faq);
     }
 }
