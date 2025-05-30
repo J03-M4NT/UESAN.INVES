@@ -10,18 +10,13 @@ namespace UESAN.INVES.CORE.Core.DTOs
     public class AccesosDTO
     {
         public int AccesoId { get; set; }
-
         public int? UsuarioId { get; set; }
-
         public DateTime? FechaHoraAcceso { get; set; }
-
-        public virtual Usuarios? Usuario { get; set; }
     }
 
     public class AccesosIdDTO
     {
         public int AccesoId { get; set; }
-
         public int? UsuarioId { get; set; }
     }
 
@@ -36,9 +31,7 @@ namespace UESAN.INVES.CORE.Core.DTOs
     {
         public int? UsuarioId { get; set; }
         public string? UsuarioNombre { get; set; }
-
         public DateTime? FechaHoraAcceso { get; set; }
-
     }
 
     public class AccesosCreateDTO
@@ -46,6 +39,4 @@ namespace UESAN.INVES.CORE.Core.DTOs
         public int? UsuarioId { get; set; }
         public DateTime? FechaHoraAcceso { get; set; }
     }
-
-
 }
