@@ -12,8 +12,8 @@ builder.Services.AddDbContext<VdiIntranetContext>(options => options.UseSqlServe
 
 //TODO: Add interfaces
 builder.Services.AddScoped<IAccesosRepository, AccesosRepository>();
-
-
+builder.Services.AddScoped<INotificacionesRepository, NotificacionesRepository>();
+builder.Services.AddScoped<IFaqChatbotRepository, FaqChatbotRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(x =>
