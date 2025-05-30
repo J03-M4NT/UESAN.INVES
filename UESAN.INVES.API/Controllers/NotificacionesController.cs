@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UESAN.INVES.CORE.Core.DTOs;
 using UESAN.INVES.CORE.Core.Interfaces;
+using UESAN.INVES.CORE.Core.Entities;
+using System.Threading.Tasks;
 
 namespace UESAN.INVES.API.Controllers
 {
@@ -15,6 +17,8 @@ namespace UESAN.INVES.API.Controllers
             _notificacionesRepository = notificacionesRepository;
         }
 
+
+        // GET: api/Notificaciones
         [HttpGet]
         public async Task<IActionResult> GetNotificaciones()
         {
@@ -22,6 +26,8 @@ namespace UESAN.INVES.API.Controllers
             return Ok(notificaciones);
         }
 
+
+        // GET: api/Notificaciones/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetNotificacion(int id)
         {
@@ -33,51 +39,41 @@ namespace UESAN.INVES.API.Controllers
             return Ok(notificacion);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutNotificacion(int id, [FromBody] NotificacionesDTO notificacionDto)
-        {
-            if (id != notificacionDto.NotificacionId)
-            {
-                return BadRequest("Notificacion ID mismatch");
-            }
-            // Se asume que el repositorio tiene un método UpdateNotificacionAsync que acepta la entidad
-            var updated = await _notificacionesRepository.UpdateNotificacionAsync(new UESAN.INVES.CORE.Core.Entities.Notificaciones
-            {
-                NotificacionId = notificacionDto.NotificacionId,
-                UsuarioId = notificacionDto.UsuarioId,
-                Mensaje = notificacionDto.Mensaje,
-                FechaEnvio = notificacionDto.FechaEnvio,
-                Leido = notificacionDto.Leido
-            });
-            if (updated == null)
-            {
-                return NotFound();
-            }
-            return NoContent();
-        }
-
+        // POST: api/Notificaciones
         [HttpPost]
-        public async Task<IActionResult> PostNotificacion([FromBody] NotificacionesDTO notificacionDto)
+        public async Task<IActionResult> PostNotificacion([FromBody] Notificaciones notificacion)
         {
-            if (notificacionDto == null)
+            if (notificacion == null)
             {
                 return BadRequest("Notificacion cannot be null");
             }
-            var createdNotificacion = await _notificacionesRepository.CreateNotificacionAsync(new UESAN.INVES.CORE.Core.Entities.Notificaciones
-            {
-                UsuarioId = notificacionDto.UsuarioId,
-                Mensaje = notificacionDto.Mensaje,
-                FechaEnvio = notificacionDto.FechaEnvio,
-                Leido = notificacionDto.Leido
-            });
-            return CreatedAtAction(nameof(GetNotificacion), new { id = createdNotificacion.NotificacionId }, createdNotificacion);
+            var created = await _notificacionesRepository.CreateNotificacionAsync(notificacion);
+            return CreatedAtAction(nameof(GetNotificacion), new { id = created.NotificacionId }, created);
         }
 
+        // PUT: api/Notificaciones/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutNotificacion(int id, [FromBody] Notificaciones notificacion)
+        {
+            if (id != notificacion.NotificacionId)
+            {
+                return BadRequest("Notificacion ID mismatch");
+            }
+            var existing = await _notificacionesRepository.GetNotificacionByIdAsync(id);
+            if (existing == null)
+            {
+                return NotFound();
+            }
+            var updated = await _notificacionesRepository.UpdateNotificacionAsync(notificacion);
+            return Ok(updated);
+        }
+
+        // DELETE: api/Notificaciones/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteNotificacion(int id)
         {
-            var result = await _notificacionesRepository.DeleteNotificacionAsync(id);
-            if (!result)
+            var deleted = await _notificacionesRepository.DeleteNotificacionAsync(id);
+            if (!deleted)
             {
                 return NotFound();
             }

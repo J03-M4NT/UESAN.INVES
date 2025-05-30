@@ -1,7 +1,11 @@
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UESAN.INVES.CORE.Core.DTOs;
 using UESAN.INVES.CORE.Core.Interfaces;
+using UESAN.INVES.CORE.Core.Entities;
+using System.Threading.Tasks;
+
 
 namespace UESAN.INVES.API.Controllers
 {
@@ -9,23 +13,25 @@ namespace UESAN.INVES.API.Controllers
     [ApiController]
     public class FaqChatbotController : ControllerBase
     {
-        private readonly IFaqChatbotService _faqService;
-        public FaqChatbotController(IFaqChatbotService faqService)
+        private readonly IFaqChatbotRepository _faqChatbotRepository;
+        public FaqChatbotController(IFaqChatbotRepository faqChatbotRepository)
         {
-            _faqService = faqService;
+            _faqChatbotRepository = faqChatbotRepository;
         }
 
+        // GET: api/FaqChatbot
         [HttpGet]
         public async Task<IActionResult> GetFaqs()
         {
-            var faqs = await _faqService.GetAllFaqsAsync();
+            var faqs = await _faqChatbotRepository.GetAllFAQsAsync();
             return Ok(faqs);
         }
 
+        // GET: api/FaqChatbot/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetFaq(int id)
         {
-            var faq = await _faqService.GetFaqByIdAsync(id);
+            var faq = await _faqChatbotRepository.GetFAQByIdAsync(id);
             if (faq == null)
             {
                 return NotFound();
@@ -33,37 +39,40 @@ namespace UESAN.INVES.API.Controllers
             return Ok(faq);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutFaq(int id, [FromBody] FaqChatbotUpdateDTO faqUpdateDto)
+        // POST: api/FaqChatbot
+        [HttpPost]
+        public async Task<IActionResult> PostFaq([FromBody] FaqChatbot faq)
         {
-            if (id != faqUpdateDto.Faqid)
+            if (faq == null)
             {
-                return BadRequest("FAQ ID mismatch");
+                return BadRequest("Faq cannot be null");
             }
-            var updated = await _faqService.UpdateFaqAsync(faqUpdateDto);
+            var created = await _faqChatbotRepository.CreateFAQAsync(faq);
+            return CreatedAtAction(nameof(GetFaq), new { id = created.Faqid }, created);
+        }
+
+        // PUT: api/FaqChatbot/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutFaq(int id, [FromBody] FaqChatbot faq)
+        {
+            if (id != faq.Faqid)
+            {
+                return BadRequest("Faq ID mismatch");
+            }
+            var updated = await _faqChatbotRepository.UpdateFAQAsync(faq);
             if (updated == null)
             {
                 return NotFound();
             }
-            return NoContent();
+            return Ok(updated);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> PostFaq([FromBody] FaqChatbotCreateDTO faqCreateDto)
-        {
-            if (faqCreateDto == null)
-            {
-                return BadRequest("FAQ cannot be null");
-            }
-            var createdFaq = await _faqService.CreateFaqAsync(faqCreateDto);
-            return CreatedAtAction(nameof(GetFaq), new { id = createdFaq.Faqid }, createdFaq);
-        }
-
+        // DELETE: api/FaqChatbot/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFaq(int id)
         {
-            var result = await _faqService.DeleteFaqAsync(id);
-            if (!result)
+            var deleted = await _faqChatbotRepository.DeleteFAQAsync(id);
+            if (!deleted)
             {
                 return NotFound();
             }
