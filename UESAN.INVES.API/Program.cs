@@ -3,6 +3,7 @@ using UESAN.INVES.CORE.Core.Interfaces;
 using UESAN.INVES.CORE.Core.Services;
 using UESAN.INVES.CORE.Infrastructure.Data;
 using UESAN.INVES.CORE.Infrastructure.Repositories;
+using UESAN.INVES.CORE.Infrastructure.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,13 +41,25 @@ builder.Services.AddScoped<IFaqChatbotRepository, FaqChatbotRepository>();
 builder.Services.AddScoped<IFaqChatbotService, FaqChatbotService>();
 
 
-
+builder.Services.AddSharedInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(x =>
         x.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddSingleton<JwtServices>(provider =>
+{
+    var config = provider.GetRequiredService<IConfiguration>();
+    var jwtSettings = config.GetSection("JWTSettings").Get<UESAN.INVES.CORE.Core.Settings.JWTSettings>();
+    return new JwtServices(
+        jwtSettings.SecretKey,
+        jwtSettings.Issuer,
+        jwtSettings.Audience,
+        (int)jwtSettings.DurationInMinutes
+    );
+});
 
 var app = builder.Build();
 
@@ -61,3 +74,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
