@@ -18,6 +18,7 @@ namespace UESAN.INVES.CORE.Infrastructure.Repositories
             _context = context;
         }
 
+
         //Get all usuarios
         public IEnumerable<Usuarios> GetAllUsuarios()
         {

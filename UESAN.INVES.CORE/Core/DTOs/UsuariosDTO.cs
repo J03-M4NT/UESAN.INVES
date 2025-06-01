@@ -46,6 +46,10 @@ namespace UESAN.INVES.CORE.Core.DTOs
         public string? Apellido { get; set; }
         public string? Correo { get; set; }
         public int RolId { get; set; }
+        public string? Contraseña { get; set; } // Considera hashear la contraseña
+
+        public bool? Estado { get; set; }
+
     }
 
     // DTO para actualización de usuario

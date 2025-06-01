@@ -5,10 +5,11 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using UESAN.INVES.CORE.Core.Entities;
+using UESAN.INVES.CORE.Core.Interfaces;
 
 namespace UESAN.INVES.CORE.Infrastructure.Shared
 {
-    public class JwtServices
+    public class JwtServices : IJwtServices
     {
         private readonly string _secretKey;
         private readonly string _issuer;

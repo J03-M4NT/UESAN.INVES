@@ -9,81 +9,64 @@ namespace UESAN.INVES.API.Controllers
     [ApiController]
     public class UsuariosController : ControllerBase
     {
-        private readonly IUsuariosRepository _usuariosRepository;
-        public UsuariosController(IUsuariosRepository usuariosRepository)
+        private readonly IUsuariosService _usuariosService;
+
+        public UsuariosController(IUsuariosService usuariosService)
         {
-            _usuariosRepository = usuariosRepository;
+            _usuariosService = usuariosService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetUsuarios()
         {
-            var usuarios = await _usuariosRepository.GetAllUsuariosAsync();
+            var usuarios = await _usuariosService.GetAllUsuariosAsync();
             return Ok(usuarios);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUsuario(int id)
         {
-            var usuario = await _usuariosRepository.GetUsuarioByIdAsync(id);
+            var usuario = await _usuariosService.GetUsuarioByIdAsync(id);
             if (usuario == null)
-            {
                 return NotFound();
-            }
             return Ok(usuario);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, [FromBody] UsuariosDTO usuarioDto)
+        [HttpPost("signin")]
+        public async Task<IActionResult> SignIn([FromBody] SignInDTO signInDto)
         {
-            if (id != usuarioDto.UsuarioId)
-            {
-                return BadRequest("Usuario ID mismatch");
-            }
-            var updated = await _usuariosRepository.UpdateUsuarioAsync(new UESAN.INVES.CORE.Core.Entities.Usuarios
-            {
-                UsuarioId = usuarioDto.UsuarioId,
-                Nombre = usuarioDto.Nombre,
-                Apellido = usuarioDto.Apellido,
-                Correo = usuarioDto.Correo,
-                RolId = usuarioDto.RolId,
-                Estado = usuarioDto.Estado,
-                FechaRegistro = usuarioDto.FechaRegistro
-            });
-            if (updated == null)
-            {
-                return NotFound();
-            }
-            return NoContent();
+            var result = await _usuariosService.SignInAsync(signInDto);
+            if (result == null)
+                return Unauthorized("Credenciales inválidas");
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostUsuario([FromBody] UsuariosDTO usuarioDto)
+        public async Task<IActionResult> CreateUsuario([FromBody] UsuariosCreateDTO dto)
         {
-            if (usuarioDto == null)
-            {
-                return BadRequest("Usuario cannot be null");
-            }
-            var createdUsuario = await _usuariosRepository.CreateUsuarioAsync(new UESAN.INVES.CORE.Core.Entities.Usuarios
-            {
-                Nombre = usuarioDto.Nombre,
-                Apellido = usuarioDto.Apellido,
-                Correo = usuarioDto.Correo,
-                RolId = usuarioDto.RolId,
-                Estado = usuarioDto.Estado,
-                FechaRegistro = usuarioDto.FechaRegistro
-            });
-            return CreatedAtAction(nameof(GetUsuario), new { id = createdUsuario.UsuarioId }, createdUsuario);
+            var id = await _usuariosService.CreateUsuarioAsync(dto);
+            return Ok(new { UsuarioId = id });
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUsuario(int id, [FromBody] UsuariosUpdateDTO dto)
+        {
+            if (id != dto.UsuarioId)
+                return BadRequest("ID mismatch");
+
+            var success = await _usuariosService.UpdateUsuarioAsync(dto);
+            if (!success)
+                return NotFound();
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUsuario(int id)
         {
-            var result = await _usuariosRepository.DeleteUsuarioAsync(id);
-            if (!result)
-            {
+            var deleted = await _usuariosService.DeleteUsuarioAsync(id);
+            if (!deleted)
                 return NotFound();
-            }
             return NoContent();
         }
     }

@@ -6,13 +6,12 @@ using System.Text;
 using UESAN.INVES.CORE.Core.Interfaces;
 namespace UESAN.INVES.CORE.Core.Settings
 {
-    public class JWTSettings : IJWTSettings
+    public class JWTSettings
     {
         public string SecretKey { get; set; }
         public string Issuer { get; set; }
         public string Audience { get; set; }
         public double DurationInMinutes { get; set; }
-
     }
 
 }
