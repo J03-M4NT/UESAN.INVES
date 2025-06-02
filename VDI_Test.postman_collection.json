@@ -1,0 +1,1193 @@
+{
+	"info": {
+		"_postman_id": "40135382-9bc7-461a-a08e-ae2df8105288",
+		"name": "VDI_Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43636447",
+		"_collection_link": "https://grupoweb-5500.postman.co/workspace/GrupoWEB-Workspace~797af22f-7641-4818-9dc3-7a42b3956fbd/collection/43636447-40135382-9bc7-461a-a08e-ae2df8105288?action=share&source=collection_link&creator=43636447"
+	},
+	"item": [
+		{
+			"name": "Accesos",
+			"item": [
+				{
+					"name": "Test_VID_Leer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Accesos",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Accesos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"usuarioId\": 1,\r\n  \"fechaHoraAcceso\": \"2024-06-01T12:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Accesos",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Accesos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accesoId\": 2,\r\n  \"usuarioId\": 2,\r\n  \"fechaHoraAcceso\": \"2025-05-30T10:00:00.000\",\r\n  \"usuario\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Accesos/2",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Accesos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TST_VDI_Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accesoId\": 2,\r\n  \"usuarioId\": 2,\r\n  \"fechaHoraAcceso\": \"2025-05-30T10:00:00.000\",\r\n  \"usuario\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Accesos/2",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Accesos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Asignaciones",
+			"item": [
+				{
+					"name": "Test_VID_Leer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Asignaciones",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Asignaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"usuarioId\": 4,\r\n  \"publicacionId\": 5,\r\n  \"estado\": \"Pendiente\",\r\n  \"fechaAsignacion\": \"2025-06-01T12:00:00.000\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Asignaciones",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Asignaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"asignacionId\": 3,\r\n  \"usuarioId\": 3,\r\n  \"publicacionId\": 3,\r\n  \"estado\": \"Completado\",\r\n  \"fechaAsignacion\": \"2025-06-01T15:30:00.000\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Accesos/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Accesos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TST_VDI_Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accesoId\": 2,\r\n  \"usuarioId\": 2,\r\n  \"fechaHoraAcceso\": \"2025-05-30T10:00:00.000\",\r\n  \"usuario\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Asignaciones/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Asignaciones",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "Test_VID_Leer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{vdi_env}}/api/Categorias",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreCategoria\": \"Salud\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Accesos",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Accesos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"categoriaId\": 3,\r\n  \"nombreCategoria\": \"Negocios Internacionales\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Accesos/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Accesos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TST_VDI_Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accesoId\": 2,\r\n  \"usuarioId\": 2,\r\n  \"fechaHoraAcceso\": \"2025-05-30T10:00:00.000\",\r\n  \"usuario\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Accesos/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Accesos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FaqChatBot",
+			"item": [
+				{
+					"name": "Test_VID_Leer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{vdi_env}}/api/Faqchatbot",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Faqchatbot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"preguntaClave\": \"nuevo tema\",\r\n  \"respuesta\": \"Aquí va la respuesta para el nuevo tema.\",\r\n  \"fechaCreacion\": \"2025-06-01T10:00:00.000\",\r\n  \"visible\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/FaqChatbot",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"FaqChatbot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"faqid\": 3,\r\n  \"preguntaClave\": \"publicación actualizada\",\r\n  \"respuesta\": \"Para publicar una investigación, asigna la revista correcta y llena el formulario actualizado.\",\r\n  \"fechaCreacion\": \"2025-06-01T12:30:00.000\",\r\n  \"visible\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/FaqChatbot/1",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"FaqChatbot",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TST_VDI_Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accesoId\": 2,\r\n  \"usuarioId\": 2,\r\n  \"fechaHoraAcceso\": \"2025-05-30T10:00:00.000\",\r\n  \"usuario\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/FaqChatbot/1",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"FaqChatbot",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Formulario Investigacion",
+			"item": [
+				{
+					"name": "Test_VID_Leer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/FormularioInvestigacion",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"FormularioInvestigacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"dni\": \"99999999\",\r\n  \"apellidos\": \"Pérez\",\r\n  \"nombres\": \"Carla\",\r\n  \"gradoAcademico\": \"Licenciado\",\r\n  \"fechaSolicitud\": \"2025-06-01\",\r\n  \"tituloProyecto\": \"Tecnologías Emergentes\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/FormularioInvestigacion",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"FormularioInvestigacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"formularioId\": 3,\r\n  \"dni\": \"11223344\",\r\n  \"apellidos\": \"Torres\",\r\n  \"nombres\": \"Pedro\",\r\n  \"gradoAcademico\": \"Bachiller\",\r\n  \"fechaSolicitud\": \"2024-06-01\",\r\n  \"tituloProyecto\": \"Innovación en Startups\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/FormularioInvestigacion/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"FormularioInvestigacion",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TST_VDI_Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accesoId\": 2,\r\n  \"usuarioId\": 2,\r\n  \"fechaHoraAcceso\": \"2025-05-30T10:00:00.000\",\r\n  \"usuario\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/FormularioInvestigacion/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"FormularioInvestigacion",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notificaciones",
+			"item": [
+				{
+					"name": "Test_VID_Leer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Notificaciones",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"usuarioId\": 1,\r\n  \"mensaje\": \"Nueva notificación de prueba.\",\r\n  \"fechaEnvio\": \"2025-06-01T14:00:00.000\",\r\n  \"leido\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Notificaciones",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"notificacionId\": 3,\r\n  \"usuarioId\": 3,\r\n  \"mensaje\": \"El administrador ha actualizado tu asignación.\",\r\n  \"fechaEnvio\": \"2025-06-01T15:00:00.000\",\r\n  \"leido\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Notificaciones/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Notificaciones",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TST_VDI_Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accesoId\": 2,\r\n  \"usuarioId\": 2,\r\n  \"fechaHoraAcceso\": \"2025-05-30T10:00:00.000\",\r\n  \"usuario\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Notificaciones/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Notificaciones",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publicaciones",
+			"item": [
+				{
+					"name": "Test_VID_Leer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Publicaciones",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Publicaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Crear",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"issn\": \"4321-8765\",\r\n  \"issn2\": \"4321-876X\",\r\n  \"issn3\": \"\",\r\n  \"nombre\": \"Revista Innovación Científica\",\r\n  \"categoriaId\": 4,\r\n  \"puntaje\": 3.75,\r\n  \"incentivoUsd\": 16000.00,\r\n  \"fechaPublicacion\": \"2025-06-01\",\r\n  \"estado\": \"Disponible\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Publicaciones",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Publicaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"publicacionId\": 3,\r\n  \"issn\": \"3234-5678\",\r\n  \"issn2\": \"3234-567X\",\r\n  \"issn3\": \"\",\r\n  \"nombre\": \"Harvard Business Review Actualizado\",\r\n  \"categoriaId\": 3,\r\n  \"puntaje\": 4.10,\r\n  \"incentivoUsd\": 21000.00,\r\n  \"fechaPublicacion\": \"2024-04-20\",\r\n  \"estado\": \"Disponible\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Publicaciones/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Publicaciones",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TST_VDI_Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accesoId\": 2,\r\n  \"usuarioId\": 2,\r\n  \"fechaHoraAcceso\": \"2025-05-30T10:00:00.000\",\r\n  \"usuario\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Publicaciones/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Publicaciones",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publicaciones Guardadas",
+			"item": [
+				{
+					"name": "Test_VID_Leer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/PublicacionesGuardadas",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"PublicacionesGuardadas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"usuarioId\": 1,\r\n  \"publicacionId\": 5,\r\n  \"fechaGuardado\": \"2025-06-01T14:30:00.000\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/PublicacionesGuardadas",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"PublicacionesGuardadas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 3,\r\n  \"usuarioId\": 1,\r\n  \"publicacionId\": 5,\r\n  \"fechaGuardado\": \"2025-06-01T16:00:00.000\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/PublicacionesGuardadas/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"PublicacionesGuardadas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TST_VDI_Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accesoId\": 2,\r\n  \"usuarioId\": 2,\r\n  \"fechaHoraAcceso\": \"2025-05-30T10:00:00.000\",\r\n  \"usuario\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/PublicacionesGuardadas/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"PublicacionesGuardadas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Test_VID_Leer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Roles",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreRol\": \"Nuevo Rol\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Roles",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"rolId\": 3,\r\n  \"nombreRol\": \"Rol Actualizado\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Roles/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Roles",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TST_VDI_Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Roles/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Roles",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Authorization",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "secret",
+									"value": "njfkdbdfkj34j4hj5h46bh5bh6576hb75nb56",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"ana.gomez@esan.edu.pe\",\r\n    \"contraseña\": \"contraseña123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Usuarios/signin",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Usuarios",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VID_Leer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Usuarios",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"María\",\r\n  \"apellido\": \"López\",\r\n  \"correo\": \"maria.lopez@esan.edu.pe\",\r\n  \"rolId\": 2,\r\n  \"estado\": true,\r\n  \"fechaRegistro\": \"2025-06-01T10:00:00.000\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Usuarios",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test_VDI_Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"usuarioId\": 3,\r\n  \"nombre\": \"Pedro\",\r\n  \"apellido\": \"Torres\",\r\n  \"correo\": \"pedro.torres@gmail.com\",\r\n  \"rolId\": 3,\r\n  \"estado\": false,\r\n  \"fechaRegistro\": \"2025-05-01T12:00:00.000\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Usuarios/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Usuarios",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TST_VDI_Borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{vdi_env}}/api/Usuarios/3",
+							"host": [
+								"{{vdi_env}}"
+							],
+							"path": [
+								"api",
+								"Usuarios",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
