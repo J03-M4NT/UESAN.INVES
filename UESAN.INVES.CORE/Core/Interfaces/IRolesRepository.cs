@@ -11,5 +11,7 @@ namespace UESAN.INVES.CORE.Core.Interfaces
         Task<Roles?> GetRoleByIdAsync(int id);
         Task<List<Roles>> GetRolesByUserIdAsync(int userId);
         Task<Roles> UpdateRoleAsync(Roles role);
+        Task<Roles?> GetByIdAsync(int id);
+
     }
 }

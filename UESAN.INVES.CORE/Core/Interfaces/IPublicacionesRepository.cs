@@ -12,5 +12,7 @@ namespace UESAN.INVES.CORE.Core.Interfaces
         Task<List<Publicaciones>> GetPublicacionesByCategoryIdAsync(int categoryId);
         Task<List<Publicaciones>> GetPublicacionesByUserIdAsync(int userId);
         Task<Publicaciones?> UpdatePublicacionAsync(Publicaciones publicacion);
+        Task<List<Publicaciones>> GetPublicacionesRecientesPorUsuario(int usuarioId);
+
     }
 }

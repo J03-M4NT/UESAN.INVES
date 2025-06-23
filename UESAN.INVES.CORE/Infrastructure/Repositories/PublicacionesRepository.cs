@@ -43,6 +43,16 @@ namespace UESAN.INVES.CORE.Infrastructure.Repositories
         }
 
         // Get publicaciones by RecientesPorUsuario 
+        public async Task<List<Publicaciones>> GetPublicacionesRecientesPorUsuario(int usuarioId)
+        {
+            return await _context.Asignaciones
+                .Include(a => a.Publicacion)
+                .Where(a => a.UsuarioId == usuarioId && a.Publicacion != null)
+                .Select(a => a.Publicacion!)
+                .OrderByDescending(p => p.FechaPublicacion)
+                .Take(5) // O el número de publicaciones recientes que desees
+                .ToListAsync();
+        }
 
 
 

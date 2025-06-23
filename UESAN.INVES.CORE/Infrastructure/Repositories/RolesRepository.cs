@@ -76,5 +76,11 @@ namespace UESAN.INVES.CORE.Infrastructure.Repositories
             return existing;
         }
 
+        public async Task<Roles?> GetByIdAsync(int id)
+        {
+            return await _context.Roles.FirstOrDefaultAsync(r => r.RolId == id);
+        }
+
+
     }
 }
