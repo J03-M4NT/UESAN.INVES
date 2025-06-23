@@ -14,11 +14,13 @@ namespace UESAN.INVES.CORE.Core.Services
     public class UsuariosService : IUsuariosService
     {
         private readonly IUsuariosRepository _usuariosRepository;
+        private readonly IRolesRepository _rolesRepository;
         private readonly JwtServices _jwtServices;
 
-        public UsuariosService(IUsuariosRepository usuariosRepository, JwtServices jwtServices)
+        public UsuariosService(IUsuariosRepository usuariosRepository, IRolesRepository rolesRepository, JwtServices jwtServices)
         {
             _usuariosRepository = usuariosRepository;
+            _rolesRepository = rolesRepository;
             _jwtServices = jwtServices;
         }
 
@@ -89,22 +91,24 @@ namespace UESAN.INVES.CORE.Core.Services
         public async Task<SignInResponseDTO> SignInAsync(SignInDTO signInDto)
         {
             var usuario = await _usuariosRepository.GetUsuarioByEmailAsync(signInDto.Correo);
-
             if (usuario == null || usuario.Contraseña != signInDto.Contraseña)
-            {
-                return null;
-            }
+                return null!;
+
+            // Asegúrate de incluir el rol completo si no está cargado
+            var rol = await _rolesRepository.GetByIdAsync(usuario.RolId);
+            usuario.Rol = rol!;
 
             var token = _jwtServices.GenerateToken(usuario);
+
             return new SignInResponseDTO
             {
                 UsuarioId = usuario.UsuarioId,
-                Nombre = usuario.Nombre,
-                Apellido = usuario.Apellido,
+                Nombre = usuario.Nombre ?? "",
+                Apellido = usuario.Apellido ?? "",
                 Correo = usuario.Correo,
                 RolId = usuario.RolId,
-                NombreRol = usuario.Rol?.NombreRol ?? string.Empty,
-                Estado = usuario.Estado ?? false, // Fix: Handle nullable Estado by providing a default value
+                NombreRol = rol?.NombreRol ?? "Desconocido",
+                Estado = usuario.Estado ?? false,
                 Token = token
             };
         }

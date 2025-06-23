@@ -53,6 +53,18 @@ namespace UESAN.INVES.API.Controllers
             return NoContent();
         }
 
+        [HttpGet("recientes/{usuarioId}")]
+        public async Task<IActionResult> GetRecientesPorUsuario(int usuarioId)
+        {
+            var publicaciones = await _publicacionesRepository.GetPublicacionesRecientesPorUsuario(usuarioId);
+            if (publicaciones == null || !publicaciones.Any())
+            {
+                return NotFound("No se encontraron publicaciones recientes para el usuario.");
+            }
+            return Ok(publicaciones);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> PostPublicacion([FromBody] PublicacionesDTO publicacionDto)
         {
