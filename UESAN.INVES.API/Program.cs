@@ -84,6 +84,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthorization();
 
+app.MapOpenApi();
 app.MapControllers();
 
 app.Run();

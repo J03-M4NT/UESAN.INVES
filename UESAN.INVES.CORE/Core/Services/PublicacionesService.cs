@@ -24,10 +24,24 @@ namespace UESAN.INVES.CORE.Core.Services
             return publicaciones.Select(p => new PublicacionesDTO
             {
                 PublicacionId = p.PublicacionId,
+                Titulo = p.Nombre,
+                NombreCategoria = p.Categoria?.NombreCategoria,
+                IncentivoUSD = p.IncentivoUsd,
+                FechaPublicacion = p.FechaPublicacion.HasValue
+                    ? p.FechaPublicacion.Value.ToDateTime(TimeOnly.MinValue)
+                    : (DateTime?)null
+            });
+        }
+
+
+            /*
+            return publicaciones.Select(p => new PublicacionesDTO
+            {
+                PublicacionId = p.PublicacionId,
                 Titulo = p.Nombre, // Asumiendo que "Nombre" es el título
                 FechaPublicacion = p.FechaPublicacion.HasValue ? p.FechaPublicacion.Value.ToDateTime(TimeOnly.MinValue) : (DateTime?)null
             });
-        }
+            */
 
         public async Task<PublicacionesDTO?> GetPublicacionByIdAsync(int id)
         {
